@@ -1,0 +1,171 @@
+[project]
+name = "dachshund"
+version = "0.1.0"
+description = "A little interface for accessing lots of agricultual and economic data."
+authors = [
+    {name = "Ryan Kuhns", email = "predictably.ai@gmail.com"},
+]
+maintainers = [
+    {name = "Ryan Kuhns", email = "predictably.ai@gmail.com"},
+]
+readme = "README.md"
+keywords = [
+    "data-science",
+    "machine-learning",
+    "scikit-learn",
+]
+classifiers = [
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: BSD License",
+    "Programming Language :: Python",
+    "Topic :: Software Development",
+    "Topic :: Scientific/Engineering",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX",
+    "Operating System :: Unix",
+    "Operating System :: MacOS",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+requires-python = ">=3.8,<3.12"
+dependencies = [
+    "attrs>=0.22.2", "polars", "typing-extensions"
+]
+
+[project.optional-dependencies]
+all_extras = ["numba", "numpy", "pandas", "fugue", "pyarrow"]
+
+cuda = ["cudf", "cupy"]
+
+dev = [
+    "pre-commit",
+    "pytest",
+    "pytest-cov",
+    "typing-extensions",
+]
+
+linters = [
+    "mypy",
+    "isort",
+    "flake8",
+    "black",
+    "pydocstyle",
+    "nbqa",
+    "flake8-bugbear",
+    "flake8-builtins",
+    "flake8-quotes",
+    "flake8-comprehensions",
+    "pandas-vet",
+    "flake8-print",
+    "pep8-naming",
+    "doc8",
+    "bandit",
+    "safety",
+]
+
+docs = [
+    "myst-parser",
+    "numpydoc",
+    "pydata-sphinx-theme",
+    "sphinx",
+    "sphinx-copybutton",
+    "sphinx-design",
+    "sphinx-issues",
+]
+
+test = [
+    "pytest",
+    "coverage",
+    "pytest-cov",
+    "joblib",
+    "numpy",
+    "pandas",
+    "pyarrow",
+    "xarray"
+]
+
+[project.urls]
+homepage = "https://github.com/predict-ably/dachshund"
+repository = "https://github.com/predict-ably/dachshund"
+documentation = "https://dachshund.readthedocs.io/en/latest/"
+download = "https://pypi.org/project/dachshund/#files"
+
+[project.license]
+file = "LICENSE"
+
+[build-system]
+requires = ["setuptools>61", "wheel", "toml", "build"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+# ignore certain folders
+addopts = [
+    "--doctest-modules",
+    "--ignore=docs",
+    "--cov=.",
+    "--cov-report=xml",
+    "--cov-report=html",
+]
+
+[tool.isort]
+profile = "black"
+src_paths = ["dachshund/*"]
+multi_line_output = 3
+known_first_party = ["dachshund"]
+
+[tool.black]
+line-length = 88
+
+[tool.pydocstyle]
+convention = "numpy"
+
+[tool.coverage.report]
+show_missing = true
+ignore_errors = true
+precision = 2
+
+[tool.coverage.run]
+source = ["dachshund"]
+omit = [
+    "*/setup.py",
+    "*/tests/*",
+    "docs/*",
+    "dachshund/tests/*",
+]
+
+[tool.doc8]
+max-line-length = 88
+ignore = ["D004"]
+ignore_path = ["docs/_build", "docs/source/api_reference/auto_generated"]
+
+[tool.bandit]
+exclude_dirs = ["*/tests/*", "*/testing/*"]
+
+[tool.numpydoc_validation]
+checks = ["all", "GL01", "SA01", "EX01"]
+exclude = [
+    "\\.*tests.*",
+    "\\.__init__$",
+    "__init__$",
+    ".*tests.*"
+]
+
+[tool.setuptools]
+zip-safe = true
+
+[tool.setuptools.package-data]
+dachshund = [
+    "*.csv",
+    "*.csv.gz",
+    "*.arff",
+    "*.arff.gz",
+    "*.txt",
+    "*.ts",
+    "*.tsv",
+]
+
+[tool.setuptools.packages.find]
+exclude = ["tests", "tests.*"]
