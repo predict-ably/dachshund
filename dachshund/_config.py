@@ -14,7 +14,7 @@ from contextlib import contextmanager
 from typing import Any, Dict, Iterator, List, Optional
 
 from dachshund._config_param_setting import GlobalConfigParamSetting
-from dachshund._consts import data_container_values, DATA_CONTAINERS
+from dachshund._consts import DATA_CONTAINERS, data_container_values
 
 __author__: List[str] = ["RNKuhns"]
 __all__: List[str] = [
