@@ -6,6 +6,14 @@
 """
 from typing import List
 
+from dachshund._config import (
+    config_context,
+    get_config,
+    get_default_config,
+    reset_config,
+    set_config,
+)
+
 __version__: str = "0.1.0"
 
 __author__: List[str] = ["RNKuhns"]
