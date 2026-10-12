@@ -4,15 +4,16 @@
 
 :mod:`dachshund` provides ightweight interface for accessing ag and econ data.
 """
+
 from typing import List
 
 __version__: str = "0.1.0"
 
 __author__: List[str] = ["RNKuhns"]
 __all__: List[str] = [
-    "get_default_config",
-    "get_config",
-    "set_config",
-    "reset_config",
     "config_context",
+    "get_config",
+    "get_default_config",
+    "reset_config",
+    "set_config",
 ]
